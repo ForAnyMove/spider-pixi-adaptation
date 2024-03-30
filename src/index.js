@@ -1,12 +1,18 @@
-const gameState = {
-  app: null,
+const deviceSizesChecker = (tabSize) => { 
+  const deviceSizes = {
+    extraSmall: 576,
+    small:760,
+    medium: 992,
+    large: 1200
+}
+  return tabSize<deviceSizes.extraSmall ? 4 : tabSize<deviceSizes.small ? 1 : tabSize<deviceSizes.medium ? 1.1 : tabSize<deviceSizes.large ? 0.8 : 0.7
 }
 
 // Safe constants
 
 const WIDTH = window.innerWidth
 const HEIGHT = window.innerHeight
-const sizeKoef = WIDTH / 950
+const sizeKoef = WIDTH / 950 * deviceSizesChecker(WIDTH)
 const texturesLink = './public/assets/Sprites'
 
 // Initializing the game
